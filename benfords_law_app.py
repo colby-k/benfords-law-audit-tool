@@ -8,6 +8,23 @@ from scipy.stats import chisquare
 st.set_page_config(page_title="Benford's Law Audit Tool", layout="centered")
 st.title("📊 Benford's Law Analysis Tool")
 
+st.caption("Upload a CSV or Excel file containing transaction data (e.g., invoices, journal entries, expenses).")
+
+with st.expander("ℹ️ What is Benford's Law and how do I interpret results?"):
+    st.markdown("""
+    **Benford's Law** predicts the distribution of first digits in naturally occurring numbers.
+
+    In internal audit and fraud detection, it's used to identify unusual digit patterns in financial transactions.
+
+    ---
+    ### **How to interpret p-values**
+    - ✅ **p ≥ 0.05** — No red flags (conforms to Benford’s Law)
+    - ⚠️ **0.01 ≤ p < 0.05** — Moderate deviation (warrants review)
+    - ❌ **p < 0.01** — Likely anomaly (possible fraud or manipulation)
+
+    > Benford's Law is not proof of fraud — but it's a powerful tool to identify where to dig deeper.
+    """)
+
 # Upload file
 uploaded_file = st.file_uploader("Upload a CSV or Excel file", type=["csv", "xlsx"])
 
@@ -45,14 +62,14 @@ if uploaded_file:
         actual = [actual_dist.get(d, 0) for d in digits]
         expected = [benford_dist[d] for d in digits]
 
-        st.subheader("Digit Distribution Comparison")
+        st.subheader(f"Digit Frequency: Actual vs. Benford Expected for '{selected_col}'")
 
         fig, ax = plt.subplots(figsize=(8, 5))
         ax.bar(digits, actual, label="Actual", alpha=0.7)
         ax.plot(digits, expected, 'r--', label="Benford Expected", linewidth=2)
         ax.set_xlabel("First Digit")
         ax.set_ylabel("Frequency")
-        ax.set_title(f"Benford's Law on '{selected_col}'")
+        ax.set_title(f"Benford's Law Distribution for '{selected_col}'")
         ax.legend()
         ax.grid(True)
         st.pyplot(fig)
@@ -65,7 +82,7 @@ if uploaded_file:
         st.subheader("Chi-Squared Test Result")
         st.markdown(f"""
         **Chi-squared statistic**: `{chi2_stat:.2f}`  
-        **p-value**: `{p_value:.4f}`  
+        **p-value**: `{p_value:.4f}`
         """)
 
         if p_value < 0.01:
