@@ -1,6 +1,3 @@
-# Generate the contents for README.md and requirements.txt
-
-readme_text = """
 # Benford's Law Audit Tool
 
 📊 **Benford's Law Analysis Tool for Auditors and Data Analysts**
