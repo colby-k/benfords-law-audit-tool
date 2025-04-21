@@ -7,7 +7,7 @@ from collections import Counter
 from scipy.stats import chisquare
 
 # Page configuration
-st.set_page_config(page_title="Benford's Law Audit Tool", layout="centered", page_icon="🧮")
+st.set_page_config(page_title="Benford's Law Audit Tool", layout="centered", page_icon="portfolio.ico")
 
 # Custom theming with CSS
 st.markdown("""
