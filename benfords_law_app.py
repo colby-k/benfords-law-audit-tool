@@ -31,7 +31,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Portfolio link (sidebar) ---
-st.sidebar.markdown("### 🔗 Portfolio")
+st.sidebar.markdown("### Portfolio")
 st.sidebar.markdown(
     "[Internal Audit & Analytics Portfolio](https://colby-k.github.io)"
 )
