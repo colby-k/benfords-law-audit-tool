@@ -36,7 +36,7 @@ st.sidebar.markdown(
     "[Internal Audit & Analytics Portfolio](https://colby-k.github.io)"
 )
 
-st.title("📊 Benford's Law Analysis Tool")
+st.title("Benford's Law Analysis Tool")
 
 # Optional small link under the title
 st.markdown(
