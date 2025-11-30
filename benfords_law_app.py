@@ -25,7 +25,13 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("📊 Benford's Law Analysis Tool")
+# --- Portfolio link (sidebar) ---
+st.sidebar.markdown("### 🔗 Portfolio")
+st.sidebar.markdown(
+    "[Internal Audit & Analytics Portfolio](https://colby-k.github.io)"
+)
+
+st.title("Benford's Law Analysis Tool")
 
 # Upload file
 uploaded_file = st.file_uploader("Upload a CSV or Excel file", type=["csv", "xlsx"])
